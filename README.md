@@ -2,7 +2,7 @@
 
 ## Calibration of Tactile Sensors for High Resolution Stress Tensor and Deformation for Dexterous Manipulation
 
-<img src="demo.gif" width="52%"/>
+<img src="demo.gif" width="75%"/>
 
 #### [Won-Kyung Do](https://wonkyungdo.github.io/website_wkdo/), [Matthew Strong](https://peasant98.github.io/), [Aiden Swann](https://aidenswann.com/), [Boshu Lei](https://scholar.google.com/citations?user=Jv88S-IAAAAJ&hl=en), and [Monroe Kennedy III](https://monroekennedy3.com/)
 Stanford University | University of Pennsylvania
