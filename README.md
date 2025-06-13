@@ -16,4 +16,4 @@ Stanford University | University of Pennsylvania
 - [ ] Release model training code (**August 15th, 2025**)
 - [ ] Release the datasets (**August 15th, 2025**)
 - [ ] Release the data collection code (**September 15th, 2025**)
-- [ ] Release FEM simulation pipeline code (**September 15th, 2025**)- [ ] 
+- [ ] Release FEM simulation pipeline code (**September 15th, 2025**)
