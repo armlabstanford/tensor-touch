@@ -1,4 +1,4 @@
-# <img src="https://github.com/user-attachments/assets/56acb64f-9f7c-40df-9373-81ca7a7ed0ad" style="width: 7%;" alt="image"> TensorTouch: 
+# <img src="https://github.com/user-attachments/assets/56acb64f-9f7c-40df-9373-81ca7a7ed0ad" style="width: 7%;" alt="image"> TensorTouch
 
 ## Calibration of Tactile Sensors for High Resolution Stress Tensor and Deformation for Dexterous Manipulation
 
