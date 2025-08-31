@@ -14,7 +14,7 @@ Stanford University | University of Pennsylvania
 
 ## TO-DO (Release dates are at the latest -- we aim to release as soon as possible!)
 - [ ] Release model on PyTorch Hub (**July 17th, 2025**)
-- [ ] Release model training code (**August 15th, 2025**)
-- [ ] Release the datasets (**August 15th, 2025**)
-- [ ] Release the data collection code (**September 15th, 2025**)
-- [ ] Release FEM simulation pipeline code (**September 15th, 2025**)
+- [ ] Release model training code (**September 15th, 2025**)
+- [ ] Release the datasets (**September 15th, 2025**)
+- [ ] Release the data collection code (**October 15th, 2025**)
+- [ ] Release FEM simulation pipeline code (**October 15th, 2025**)
