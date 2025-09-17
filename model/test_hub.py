@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 from configs import get_cfg_defaults
 
-LOCAL_CONFIG_PATH = 'configs/dt_ultra.yaml' 
+LOCAL_CONFIG_PATH = 'model/configs/dt_ultra.yaml' 
 
 def denormalize_output(pred, cfg, output_names):
     """Denormalize model predictions following train_ViT_lightning.py"""
@@ -85,13 +85,11 @@ if __name__ == '__main__':
         transforms.Resize((cfg.model.img_size, cfg.model.img_size), antialias=True),
     ])
 
-    dataset_dir = '/arm/u/maestro/Desktop/DenseTact-Model/es4t/es4t/dataset_local/'
-
     real_world = False
 
     from PIL import Image
-    deformed_pil = Image.open('deformed_tactile.png').convert('RGB')  # Ensure RGB only
-    undeformed_pil = Image.open('undeformed_tactile.png').convert('RGB')  # Ensure RGB only
+    deformed_pil = Image.open('model/deformed_tactile.png').convert('RGB')  # Ensure RGB only
+    undeformed_pil = Image.open('model/undeformed_tactile.png').convert('RGB')  # Ensure RGB only
     
     # Convert PIL images to torch tensors (C, H, W) format with values in [0, 1]
     to_tensor = transforms.ToTensor()
@@ -121,7 +119,6 @@ if __name__ == '__main__':
 
     # z shape is num of vision tokens x 768.
     # for a 256 by 256 image, we have 16x16 vision tokens. So, 256 vision tokens!
-
     print(z.shape)
 
     with torch.no_grad():
