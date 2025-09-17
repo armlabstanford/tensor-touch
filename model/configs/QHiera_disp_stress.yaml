@@ -1,0 +1,29 @@
+dataset_ratio: 1.0
+batch_size: 32
+epochs: 150
+
+model:
+  name: HieraDPT
+  out_chans: [2, 2, 2]
+  pretrained_model: "exp/HieraRealMAE/checkpoints/last.ckpt"
+
+  hiera:
+    decoder: "QUpsampling"
+    decoder_embed_dim: 512
+    decoder_num_heads: 16
+    decoder_depth: 8
+
+dataset:
+  output_type: ["disp", "stress1"]
+  contiguous_on_direction: True
+
+metric:
+  PN_thresh: 0.001
+
+optimizer:
+  name: AdamW
+  lr: 0.001
+
+scheduler:
+  name: linear_cosine
+  warmup: 2000

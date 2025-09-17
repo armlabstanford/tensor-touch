@@ -1,0 +1,25 @@
+dataset_ratio: 1.0
+batch_size: 64
+scale: 1000.
+
+model:
+  name: HieraDPT
+  out_chans: 1
+  pretrained_model: "exp/HieraRealMAE/checkpoints/last.ckpt"
+
+  hiera:
+    decoder: "Vanilla"
+    decoder_embed_dim: 512
+    decoder_num_heads: 16
+    decoder_depth: 8
+
+dataset:
+  output_type: "depth"
+
+optimizer:
+  name: AdamW
+  lr: 0.001
+
+scheduler:
+  name: linear_cosine
+  warmup: 2000

@@ -1,0 +1,43 @@
+dataset_ratio: 1.0
+batch_size: 16
+scale: 1.0
+epochs: 100
+
+
+scales:
+  disp: 10.
+  cnorm: 1000.
+  stress: 1000.
+  stress2: 1000.
+  area_shear: 1000.
+
+unit_scales:
+  disp: 1000.
+  cnorm: 1.
+  stress: 1.
+  stress2: 1.
+  area_shear: 1.
+
+
+model:
+  name: DenseNetV2
+  out_chans: [3, 3, 3, 3, 3]
+  encoder: "densenet"
+  backbone: "densenet161"
+  imagenet_pretrained: False
+
+dataset:
+  output_type: ["disp", "cnorm", "stress1", "stress2", "shear"]
+  normalization: False
+
+optimizer:
+  name: AdamW
+  lr: 0.001
+
+metric:
+  PN_thresh: 0.001
+  TF_abs_error_thresh: 0.01
+
+scheduler:
+  name: linear_cosine
+  warmup: 2000

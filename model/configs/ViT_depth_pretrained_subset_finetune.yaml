@@ -1,0 +1,21 @@
+# file to finetune encoder of ViT 
+# the optimizer should be the same as the original training
+
+dataset_ratio: 0.4
+epochs: 50
+
+model:
+  name: ViT
+  out_chans: 1
+  pretrained_model: ""
+
+dataset:
+  output_type: "depth"
+
+optimizer:
+  name: Adam
+  lr: 0.0001
+
+scheduler:
+  name: linear_cosine
+  warmup: 2000

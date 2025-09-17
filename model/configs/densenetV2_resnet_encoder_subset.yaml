@@ -1,0 +1,11 @@
+dataset_ratio: 0.4
+
+model:
+  name: DenseNetV2
+  out_chans: 1
+  encoder: resnet
+  backbone: resnet152
+
+dataset:
+  output_type: "depth"
+  

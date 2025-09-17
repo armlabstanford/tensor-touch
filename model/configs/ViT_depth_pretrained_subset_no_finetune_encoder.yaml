@@ -1,0 +1,9 @@
+dataset_ratio: 0.4
+
+model:
+  name: ViT
+  out_chans: 1
+  pretrained_model: "exp/MAE_ViT_Pretrain_75/checkpoints/last.ckpt"
+
+dataset:
+  output_type: "depth"

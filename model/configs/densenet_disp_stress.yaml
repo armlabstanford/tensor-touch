@@ -1,0 +1,23 @@
+dataset_ratio: 0.5
+
+model:
+  name: DenseNetV2
+  out_chans: [3, 3]
+  encoder: "densenet"
+  backbone: "densenet161"
+  imagenet_pretrained: True
+
+dataset:
+  output_type: ["disp", "stress1"]
+  contiguous_on_direction: False
+  # dataset_path: "real_world_dataset"
+
+optimizer:
+  name: Adam
+
+metric:
+  PN_thresh: 0.001
+  TF_abs_error_thresh: 0.01
+
+scheduler:
+  name: "none"

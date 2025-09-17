@@ -1,0 +1,9 @@
+dataset_ratio: 0.4
+batch_size: 16
+
+model:
+  name: DPT
+  out_chans: 1
+
+dataset:
+  output_type: "depth"
