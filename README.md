@@ -29,7 +29,7 @@ We have released the training code, but have yet to release the datasets, which 
 
 
 ```sh
-pip install torch torchvision yacs timm
+pip install torch torchvision yacs timm matplotlib
 ```
 ```python
 >>> import torch
