@@ -1,0 +1,51 @@
+dataset_ratio: 1.0
+batch_size: 24
+scale: 1.0
+epochs: 500
+
+scales:
+  disp: 10.
+  cnorm: 1000.
+  stress: 1000.
+  stress2: 1000.
+  area_shear: 1000.
+
+unit_scales:
+  disp: 1000.
+  cnorm: 1.
+  stress: 1.
+  stress2: 1.
+  area_shear: 1.
+
+model:
+  name: SiameseViT
+  out_chans: [3, 3, 3, 3, 3]
+
+  siamese_vit:
+    img_size: 256
+    patch_size: 16
+    in_chans: 3
+    embed_dim: 768
+    depth: 12
+    num_heads: 12
+    decoder_embed_dim: 512
+    decoder_depth: 8
+    decoder_num_heads: 16
+    mlp_ratio: 4.0
+    fusion_method: "concat_diff"  # options: concat, diff, concat_diff
+
+dataset:
+  output_type: ["disp", "cnorm", "stress1", "stress2", "shear"]
+  normalization: False
+
+optimizer:
+  name: AdamW
+  lr: 0.001
+
+metric:
+  PN_thresh: 0.001
+  TF_abs_error_thresh: 0.01
+
+scheduler:
+  name: linear_cosine
+  warmup: 500

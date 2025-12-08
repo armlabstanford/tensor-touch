@@ -123,6 +123,20 @@ cfg.model.hiera.decoder_depth = 3
 # returning the encoder output in hiera
 cfg.model.hiera.return_encoder_output = False
 
+# parameters for SiameseViT model (shared encoder for deformed/undeformed images)
+cfg.model.siamese_vit = CN()
+cfg.model.siamese_vit.img_size = 256
+cfg.model.siamese_vit.patch_size = 16
+cfg.model.siamese_vit.in_chans = 3  # per image (deformed or undeformed)
+cfg.model.siamese_vit.embed_dim = 768
+cfg.model.siamese_vit.depth = 12
+cfg.model.siamese_vit.num_heads = 12
+cfg.model.siamese_vit.decoder_embed_dim = 512
+cfg.model.siamese_vit.decoder_depth = 8
+cfg.model.siamese_vit.decoder_num_heads = 16
+cfg.model.siamese_vit.mlp_ratio = 4.0
+cfg.model.siamese_vit.fusion_method = "concat_diff"  # options: concat, diff, concat_diff
+
 cfg.dataset = CN()
 cfg.dataset.output_type = []
 cfg.dataset.contiguous_on_direction = False
