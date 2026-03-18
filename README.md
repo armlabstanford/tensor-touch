@@ -31,15 +31,60 @@ We have released the training code, but have yet to release the datasets, which 
 ```sh
 pip install torch torchvision yacs timm matplotlib
 ```
+
+### Available Models
+
+| Model | Entry Point | Params | Encoder Dim | PSNR | Description |
+|---|---|---|---|---|---|
+| Hiera Base | `hiera` | 56M | 768 | — | Original base model |
+| Hiera Large v1 | `hiera_large_v1` | 268M | 1152 | 45.32 | Large model (early training) |
+| Hiera Large v2 | `hiera_large_v2` | 268M | 1152 | 52.22 | Large model (best) |
+
+### Hiera Base (original)
 ```python
->>> import torch
->>> model = torch.hub.load('peasant98/DenseTact-Model', 'hiera', pretrained=True, map_location='cpu', trust_repo=True)
->>> model = model.cuda()
+import torch
+model = torch.hub.load('peasant98/DenseTact-Model', 'hiera', pretrained=True, map_location='cpu', trust_repo=True)
+model = model.cuda()
 ```
 
-We have a demo to run on sample images:
+### Hiera Large (recommended)
+```python
+import torch
 
-We also provide steps for running the encoder, which can be found in the file!
+# Best model (epoch 43, PSNR 52.22)
+model = torch.hub.load('peasant98/DenseTact-Model', 'hiera_large_v2', pretrained=True, map_location='cpu', trust_repo=True)
+model = model.cuda()
+
+# Earlier checkpoint (epoch 22, PSNR 45.32)
+model_v1 = torch.hub.load('peasant98/DenseTact-Model', 'hiera_large_v1', pretrained=True, map_location='cpu', trust_repo=True)
+```
+
+### Running Inference
+
+```python
+model.eval()
+
+# Input: 6-channel tensor (deformed RGB + undeformed RGB), 256x256
+x = torch.randn(1, 6, 256, 256).cuda()
+
+with torch.no_grad():
+    output = model(x)  # Shape: (1, 15, 256, 256)
+    # 15 channels = 5 modalities x 3 directions (x, y, z)
+    # Modalities: disp, cnorm, stress1, stress2, shear
+```
+
+### Using the Encoder
+
+```python
+# Extract vision token embeddings from the encoder
+z, intermediates = model.encoder(x, None, return_intermediates=True)
+# Hiera Base:  z shape is (1, 256, 768)  — 256 vision tokens, 768-dim
+# Hiera Large: z shape is (1, 256, 1152) — 256 vision tokens, 1152-dim
+```
+
+### Demo
+
+We have a demo to run on sample images that compares all three models:
 
 ```sh
 python3 model/test_hub.py
