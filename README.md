@@ -37,7 +37,7 @@ pip install torch torchvision yacs timm matplotlib
 | Model | Entry Point | Params | Encoder Dim | PSNR | Description |
 |---|---|---|---|---|---|
 | Hiera Base | `hiera` | 56M | 768 | — | Original base model |
-| Hiera Large v1 | `hiera_large_v1` | 268M | 1152 | 45.32 | Large model (early training) |
+| Hiera Large v1 | `hiera_large_v1` | 268M | 1152 | 45.32 | Large model (aggressive augmentation) |
 | Hiera Large v2 | `hiera_large_v2` | 268M | 1152 | 52.22 | Large model (best) |
 
 ### Hiera Base (original)
@@ -55,7 +55,7 @@ import torch
 model = torch.hub.load('peasant98/DenseTact-Model', 'hiera_large_v2', pretrained=True, map_location='cpu', trust_repo=True)
 model = model.cuda()
 
-# Earlier checkpoint (epoch 22, PSNR 45.32)
+# Earlier checkpoint (epoch 22, PSNR 45.32) — trained with more aggressive augmentation
 model_v1 = torch.hub.load('peasant98/DenseTact-Model', 'hiera_large_v1', pretrained=True, map_location='cpu', trust_repo=True)
 ```
 
