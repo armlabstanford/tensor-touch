@@ -1,0 +1,49 @@
+dataset_ratio: 1.0
+batch_size: 24
+scale: 1.0
+epochs: 500
+
+scales:
+  disp: 10.
+  cnorm: 1000.
+  stress: 1000.
+  stress2: 1000.
+  area_shear: 1000.
+
+unit_scales:
+  disp: 1000.
+  cnorm: 1.
+  stress: 1.
+  stress2: 1.
+  area_shear: 1.
+
+model:
+  name: HieraDPT
+  out_chans: [3, 3, 3, 3, 3]
+  LoRA: True
+
+  hiera:
+    embed_dim: 144
+    num_heads: 2
+    stages: [2, 6, 36, 4]
+    q_pool: 2
+    return_encoder_output: False
+    decoder: "QUpsampling"
+    decoder_num_heads: 16
+    decoder_depth_per_stage: 4
+
+dataset:
+  output_type: ["disp", "cnorm", "stress1", "stress2", "shear"]
+  normalization: False
+
+optimizer:
+  name: AdamW
+  lr: 0.001
+
+metric:
+  PN_thresh: 0.001
+  TF_abs_error_thresh: 0.01
+
+scheduler:
+  name: linear_cosine
+  warmup: 500
